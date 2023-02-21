@@ -16,7 +16,7 @@ A Classic Addon/Library to show achievement alike notifications for several even
 
 
 ## Installation
-1. Download **[Latest Version](https://github.com/Lihvar/ShaguNotify/archive/master.zip)**
+1. Download **[Latest Version](https://github.com/Lihvar/ShaguNotify/releases/download/master/ShaguNotifyClassic-1.14.X-2.5.X.zip)**
 2. Unpack the Zip file
 3. Rename the folder "ShaguNotify-master" to "ShaguNotify"
 4. Copy "ShaguNotify" into Wow-Directory\Interface\AddOns
