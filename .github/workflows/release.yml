@@ -1,0 +1,46 @@
+name: Release all branches
+
+# use manual run
+#on:
+#  [workflow_dispatch]
+  
+# on push
+on:
+  push:
+
+env:
+  BRANCH_CLASSIC: "master"
+  ARCHIVE_PREFIX: "addon-"
+  ARCHIVE_SUFFIX: ".zip"
+  WORK_FOLDER: "${{github.workspace}}\\WorkFolder"
+  
+jobs:
+  release:
+    runs-on: windows-2022
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout classic
+        uses: actions/checkout@v2
+        with:
+          ref: ${{env.BRANCH_CLASSIC}}
+          path: "master/ShaguNotify"
+          
+      - name: Prepare archives
+        run: |
+          md -Force "${{github.workspace}}\releases"
+          7z a -tzip "${{github.workspace}}\releases\${{env.ARCHIVE_PREFIX}}1.14.X-2.5.X${{env.ARCHIVE_SUFFIX}}" "${{github.workspace}}/1.14-2.5.2/ShaguNotify"
+          
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          
+      - name: Upload release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          release_name: "Release (${{ steps.date.outputs.date }})"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          file_glob: true
+          file: releases/*.zip
+          overwrite: true
