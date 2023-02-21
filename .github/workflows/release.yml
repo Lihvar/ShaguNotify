@@ -30,7 +30,7 @@ jobs:
       - name: Prepare archives
         run: |
           md -Force "${{github.workspace}}\releases"
-          7z a -tzip "${{github.workspace}}\releases\${{env.ARCHIVE_PREFIX}}1.14.X-2.5.X${{env.ARCHIVE_SUFFIX}}" "${{github.workspace}}/1.14-2.5.2/ShaguNotify"
+          7z a -tzip "${{github.workspace}}\releases\${{env.ARCHIVE_PREFIX}}1.14.X-2.5.X${{env.ARCHIVE_SUFFIX}}" "${{github.workspace}}/master/ShaguNotify"
           
       - name: Get current date
         id: date
