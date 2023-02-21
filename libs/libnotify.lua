@@ -16,7 +16,7 @@ for _, name in pairs(tocs) do
 end
 
 function libnotify:CreateFrame()
-  local frame = CreateFrame("Button", "Achievment", UIParent)
+  local frame = CreateFrame("Button", "Achievement", UIParent)
 
   frame:SetWidth(300)
   frame:SetHeight(88)
@@ -25,52 +25,52 @@ function libnotify:CreateFrame()
 
   do -- animations
     frame:SetScript("OnShow", function()
-      this.modifyA = 1
-      this.modifyB = 0
-      this.stateA = 0
-      this.stateB = 0
-      this.animate = true
+      frame.modifyA = 1
+      frame.modifyB = 0
+      frame.stateA = 0
+      frame.stateB = 0
+      frame.animate = true
 
-      this.showTime = GetTime()
+      frame.showTime = GetTime()
     end)
 
     frame:SetScript("OnUpdate", function()
-      if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + .01 end
+      if ( frame.tick or 1) > GetTime() then return else frame.tick = GetTime() + .01 end
 
-      if this.animate == true then
-        if this.stateA > .50 and this.modifyA == 1 then
-          this.modifyB = 1
+      if frame.animate == true then
+        if frame.stateA > .50 and frame.modifyA == 1 then
+          frame.modifyB = 1
         end
 
-        if this.stateA > .75 then
-          this.modifyA = -1
+        if frame.stateA > .75 then
+          frame.modifyA = -1
         end
 
-        if this.stateB > .50 then
-          this.modifyB = -1
+        if frame.stateB > .50 then
+          frame.modifyB = -1
         end
 
-        this.stateA = this.stateA + this.modifyA/50
-        this.stateB = this.stateB + this.modifyB/50
+        frame.stateA = frame.stateA + frame.modifyA/50
+        frame.stateB = frame.stateB + frame.modifyB/50
 
-        this.glow:SetGradientAlpha("HORIZONTAL",
-          this.stateA, this.stateA, this.stateA, this.stateA,
-          this.stateB, this.stateB, this.stateB, this.stateB)
+        frame.glow:SetGradientAlpha("HORIZONTAL",
+          frame.stateA, frame.stateA, frame.stateA, frame.stateA,
+          frame.stateB, frame.stateB, frame.stateB, frame.stateB)
 
-        this.shine:SetGradientAlpha("VERTICAL",
-          this.stateA, this.stateA, this.stateA, this.stateA,
-          this.stateB, this.stateB, this.stateB, this.stateB)
+        frame.shine:SetGradientAlpha("VERTICAL",
+          frame.stateA, frame.stateA, frame.stateA, frame.stateA,
+          frame.stateB, frame.stateB, frame.stateB, frame.stateB)
 
-        if this.stateA < 0 and this.stateB < 0 then
-          this.animate = false
+        if frame.stateA < 0 and frame.stateB < 0 then
+          frame.animate = false
         end
       end
 
-      if this.showTime + 5 < GetTime() then
-        this:SetAlpha(this:GetAlpha() - .05)
-        if this:GetAlpha() <= 0 then
-          this:Hide()
-          this:SetAlpha(1)
+      if frame.showTime + 5 < GetTime() then
+        frame:SetAlpha(frame:GetAlpha() - .05)
+        if frame:GetAlpha() <= 0 then
+          frame:Hide()
+          frame:SetAlpha(1)
         end
       end
     end)

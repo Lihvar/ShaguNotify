@@ -1,6 +1,6 @@
-## Interface: 11200
+## Interface: 20503
 ## Title: |cff33ffccShagu|cffffffffNotify
-## Author: Shagu
+## Author: Shagu, Lihvar
 ## Notes: An Achievement Alike Notification System For Custom Events
 ## Version: 0.1
 
