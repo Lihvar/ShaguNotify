@@ -10,7 +10,7 @@ on:
 
 env:
   BRANCH_CLASSIC: "master"
-  ARCHIVE_PREFIX: "addon-"
+  ARCHIVE_PREFIX: "ShaguNotifyClassic-"
   ARCHIVE_SUFFIX: ".zip"
   WORK_FOLDER: "${{github.workspace}}\\WorkFolder"
   
